@@ -1,0 +1,10 @@
+REPOSITORY                TAG       IMAGE ID       CREATED          SIZE
+mickpav/ubuntu-tmp-file   latest    a35296dd5f2a   41 seconds ago   63.2MB
+ubuntu                    18.04     f9a80a55f492   8 months ago     63.2MB
+hello-world               latest    d2c94e258dcb   9 months ago     13.3kB
+
+
+Отличие контейнера от образа:
+- контейнер - развернутое приложение или сервис со всем необходимым окружением,
+зависимостями и библиотеками
+- образ - шаблон с инструкциями для развертывания контейнера

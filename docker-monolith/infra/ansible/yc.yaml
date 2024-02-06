@@ -1,0 +1,13 @@
+plugin: community.general.yc_compute
+auth_kind: "serviceaccountfile"
+service_account_file: "/home/mike/key.json"
+folders:
+   - b1g91p2spmjgqtkfjh67
+hostnames:
+   - public_ip
+compose:
+   ansible_host: network_interfaces[0].primary_v4_address.one_to_one_nat.address
+keyed_groups:
+    - key: labels['group']
+      prefix: ''
+      separator: ''
