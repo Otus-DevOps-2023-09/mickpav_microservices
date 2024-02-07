@@ -1,0 +1,22 @@
+{
+    "builders": [
+        {
+            "type": "yandex",
+            "service_account_key_file": "/home/mike/key.json",
+            "folder_id": "b1g91p2spmjgqtkfjh67",
+            "source_image_family": "ubuntu-1804-lts",
+            "image_name": "docker-host-{{timestamp}}",
+            "image_family": "docker-host",
+            "ssh_username": "ubuntu",
+	        "use_ipv4_nat": "true",
+	        "platform_id": "standard-v1"
+        }
+    ],
+    "provisioners": [
+         {
+            "type": "ansible",
+            "playbook_file": "../ansible/docker.yml",
+            "use_proxy": false
+        }
+    ]
+}

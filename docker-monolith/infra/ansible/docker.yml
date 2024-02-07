@@ -1,0 +1,46 @@
+---
+
+- name: Install Docker
+  hosts: all
+  become: true
+  tasks:
+    - name: Install Docker prerequisites
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - ca-certificates
+        - curl
+        - python-pip
+
+    - name: Setting dirs
+      command:
+        install -m 0755 -d /etc/apt/keyrings
+
+    - name: Getting sign key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Adding repo
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+        state: present
+
+    - name: Installing Docker
+      apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+      with_items:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+        - docker-buildx-plugin
+        - docker-compose-plugin
+
+    - name: Starting Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
