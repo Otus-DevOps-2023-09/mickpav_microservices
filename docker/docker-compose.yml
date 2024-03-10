@@ -10,6 +10,7 @@ services:
           - comment_db
           - post_db
   ui:
+<<<<<<< HEAD
     image: ${USERNAME}/ui:${VERSION}
     ports:
       - ${UI_PORT}:${UI_PORT}/tcp
@@ -37,10 +38,8 @@ services:
       options:
         fluentd-address: localhost:24224
         tag: service.post
-    networks:
-      - front
-      - back
   comment:
+<<<<<<< HEAD
     image: ${USERNAME}/comment:${VERSION}
     environment:
       - ZIPKIN_ENABLED=${ZIPKIN_ENABLED} 
@@ -82,4 +81,3 @@ networks:
   front:
   back:
 
-  
