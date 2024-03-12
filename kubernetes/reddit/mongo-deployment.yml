@@ -5,6 +5,7 @@ metadata:
   labels:
     app: reddit
     component: mongo
+    post-db: "true"
     comment-db: "true"
 spec:
   replicas: 1
@@ -18,6 +19,7 @@ spec:
       labels:
         app: reddit
         component: mongo
+        post-db: "true"
         comment-db: "true"
     spec:
       containers:
@@ -28,4 +30,5 @@ spec:
           mountPath: /data/db
       volumes:
       - name: mongo-persistent-storage
-        emptyDir: {}
+        persistentVolumeClaim:
+          claimName:  mongo-pvc
